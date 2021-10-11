@@ -2,6 +2,7 @@ import Layout from "../components/layout"
 import { useRouter } from "next/router"
 import styles from "../styles/Home.module.css"
 import { useRef } from "react"
+import Header from "../components/Header"
 
 export default function Home({ data }) {
   const router = useRouter()
@@ -20,6 +21,7 @@ export default function Home({ data }) {
 	}
 	return (
 		<Layout>
+			<Header back={false}/>
 			<form action="#" className={styles.searchForm}>
 				<input type="text" ref={searchInputRef} placeholder="Search jokes by text" className={styles.searchInput} />
 				<button className={styles.defaultButton} onClick={search}>

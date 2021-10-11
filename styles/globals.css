@@ -35,3 +35,12 @@ a {
 	font-size: 24px;
 	padding: 16px;
 }
+
+.backToHome {
+  position: absolute;
+  padding: 0 10px;
+}
+
+.backIcon {
+  height: 21px;
+}

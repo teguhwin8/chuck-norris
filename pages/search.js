@@ -2,6 +2,7 @@ import Head from "next/head"
 import Layout from "../components/layout"
 import styles from "../styles/Search.module.css"
 import Image from "next/image"
+import Header from "../components/Header"
 
 export default function Search({ data, keyword }) {
 	return (
@@ -9,6 +10,7 @@ export default function Search({ data, keyword }) {
 			<Head>
 				<title>Search Results</title>
 			</Head>
+			<Header back={true}/>
 			<div className={styles.flexCenter}>
 				<Image src="/chuck-norris.svg" alt="Chuck Norris" width={60} height={60} />
 			</div>

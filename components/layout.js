@@ -6,12 +6,7 @@ export default function Layout({ children }) {
 			<Head>
 				<title>Chuck Norris</title>
 			</Head>
-			<div className="container">
-				<div className="header">
-					<div className="headerTitle">CHUCK NORRIS</div>
-				</div>
-				{children}
-			</div>
+			<div className="container">{children}</div>
 		</>
 	)
 }
