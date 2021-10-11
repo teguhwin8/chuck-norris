@@ -1,0 +1,25 @@
+.flexCenter {
+	display: flex;
+	justify-content: center;
+  margin: 32px 0;
+}
+
+.chuckNorrisCaption {
+	font-family: "Open Sans", sans-serif;
+	font-style: italic;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 22px;
+	text-align: center;
+	color: #000000;
+  margin: 24px 16px;
+}
+
+.resultKeyword {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  color: #B45309;
+}

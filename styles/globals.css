@@ -23,6 +23,7 @@ a {
 	background-color: #ffffff;
 	margin: auto;
 	min-height: 100vh;
+  padding-bottom: 16px;
 }
 
 .header {
