@@ -44,7 +44,7 @@ export default function Home({ data, categories }) {
 			<div className="relative">
 				<div className={styles.searchByCategory}>
 					<div className={styles.selectCategory}>
-						<input type="text" list="data" ref={categoryInputRef} />
+						<input type="text" list="data" ref={categoryInputRef} placeholder="Search jokes by category" />
 
 						<datalist id="data">
 							{categories.map((item, key) => (
