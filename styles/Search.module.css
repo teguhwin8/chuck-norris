@@ -13,6 +13,7 @@
 	text-align: center;
 	color: #000000;
   margin: 24px 16px;
+	overflow-wrap: break-word;
 }
 
 .resultKeyword {
@@ -22,4 +23,8 @@
   line-height: 22px;
   text-align: center;
   color: #B45309;
+}
+
+.capitalize {
+	text-transform: capitalize;
 }

@@ -4,27 +4,31 @@ import styles from "../styles/Home.module.css"
 import { useRef } from "react"
 import Header from "../components/Header"
 
-export default function Home({ data }) {
-  const router = useRouter()
+export default function Home({ data, categories }) {
+	const router = useRouter()
 	const refreshData = () => {
 		router.replace(router.asPath)
 	}
 	const searchInputRef = useRef(null)
+	const categoryInputRef = useRef(null)
 	const search = (e) => {
 		e.preventDefault()
-    const keyword = searchInputRef.current.value
-
-    if(!keyword) return
-
-    router.push(`search?keyword=${keyword}`)
-		console.log(keyword)
+		const keyword = searchInputRef.current.value
+		if (!keyword) return
+		router.push(`search?keyword=${keyword}`)
+	}
+	const handleSearchByCategory = (e) => {
+		e.preventDefault()
+		const category = categoryInputRef.current.value
+		if (!category) return
+		router.push(`category/${category}`)
 	}
 	return (
 		<Layout>
-			<Header back={false}/>
+			<Header back={false} />
 			<form action="#" className={styles.searchForm}>
 				<input type="text" ref={searchInputRef} placeholder="Search jokes by text" className={styles.searchInput} />
-				<button className={styles.defaultButton} onClick={search}>
+				<button className="defaultButton" onClick={search}>
 					Search!
 				</button>
 			</form>
@@ -33,17 +37,32 @@ export default function Home({ data }) {
 			</div>
 			<div className={styles.chuckNorrisCaption}>“{data.value}”</div>
 			<div className={styles.flexCenter}>
-				<button className={styles.defaultButton} onClick={refreshData}>
+				<button className="defaultButton" onClick={refreshData}>
 					Another!
 				</button>
+			</div>
+			<div className="relative">
+				<div className={styles.searchByCategory}>
+					<div className={styles.selectCategory}>
+						<input type="text" list="data" ref={categoryInputRef} />
+
+						<datalist id="data">
+							{categories.map((item, key) => (
+								<option key={key} value={item} />
+							))}
+						</datalist>
+					</div>
+					<button className="defaultButton" onClick={handleSearchByCategory}>
+						Search!
+					</button>
+				</div>
 			</div>
 		</Layout>
 	)
 }
 
 export async function getServerSideProps() {
-	const res = await fetch(`https://api.chucknorris.io/jokes/random`)
-	const data = await res.json()
-
-	return { props: { data } }
+	const [randomRes, categoryRes] = await Promise.all([fetch(`https://api.chucknorris.io/jokes/random`), fetch(`https://api.chucknorris.io/jokes/categories`)])
+	const [data, categories] = await Promise.all([randomRes.json(), categoryRes.json()])
+	return { props: { data, categories } }
 }
